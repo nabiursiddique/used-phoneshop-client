@@ -5,7 +5,7 @@ import PrimaryButton from '../../../components/PrimaryButton/PrimaryButton';
 
 const OurMoto = () => {
     return (
-        <div className="my-14 hero min-h-screen " style={{ backgroundImage: `url(${mobile})` }}>
+        <div className="my-14 hero min-h-screen " style={{ backgroundImage: `url(${mobile})`, backgroundAttachment: "fixed" }}>
             <div className="hero-content text-center glass lg:p-10">
                 <div className="max-w-md text-white">
                     <h1 className="text-5xl font-bold">Unbeatable Price and Quality</h1>
