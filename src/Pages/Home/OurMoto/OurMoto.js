@@ -5,11 +5,11 @@ import PrimaryButton from '../../../components/PrimaryButton/PrimaryButton';
 
 const OurMoto = () => {
     return (
-        <div className="my-8 hero min-h-screen " style={{ backgroundImage: `url(${mobile})` }}>
+        <div className="my-14 hero min-h-screen " style={{ backgroundImage: `url(${mobile})` }}>
             <div className="hero-content text-center glass lg:p-10">
-                <div className="max-w-md">
+                <div className="max-w-md text-white">
                     <h1 className="text-5xl font-bold">Unbeatable Price and Quality</h1>
-                    <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+                    <p className="py-6">We are trying to give the best quality used phone to all of our customers.We always try to sell those used phones which are in a great condition and not used that much.</p>
                     <PrimaryButton><Link to='/login'>Join With Us</Link></PrimaryButton>
                 </div>
             </div>

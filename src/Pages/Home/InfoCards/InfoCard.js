@@ -7,9 +7,9 @@ const InfoCard = ({ card }) => {
             <figure>
                 <img className='w-2/3 rounded-2xl' src={icon} alt="infocard" />
             </figure>
-            <div className="card-body">
-                <h2 className="text-2xl font-bold">{name}</h2>
-                <p>{description}</p>
+            <div className="card-body ">
+                <h2 className="text-2xl font-bold p-0">{name}</h2>
+                <p className='p-0'>{description}</p>
             </div>
         </div>
     );

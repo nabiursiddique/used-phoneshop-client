@@ -4,7 +4,7 @@ import PrimaryButton from '../../../components/PrimaryButton/PrimaryButton';
 
 const Banner = () => {
     return (
-        <div className='mx-5 '>
+        <div className='mx-5 mb-8'>
             <div className="hero glass rounded-2xl mt-4 ">
                 <div className="hero-content flex-col lg:flex-row">
                     <img className='lg:w-1/2 rounded-2xl' src={bannerImage} alt='mobile banner' />
