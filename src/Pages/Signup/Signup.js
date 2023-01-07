@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { FaGoogle } from 'react-icons/fa';
 import { AuthContext } from '../../context/AuthProvider';
 import { GoogleAuthProvider } from 'firebase/auth';
+import { toast } from 'react-hot-toast';
 
 const Signup = () => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
@@ -15,9 +16,12 @@ const Signup = () => {
         createUser(data.email, data.password)
             .then(result => {
                 const user = result.user;
+                toast.success('Log In Successful');
                 console.log(user);
             })
-            .catch(err => console.error(err));
+            .catch(err => {
+                toast.error(err.message);
+            });
 
         //Resetting the form 
         reset();
@@ -29,9 +33,13 @@ const Signup = () => {
         googleSignIn(googleProvider)
             .then((result) => {
                 const user = result.user;
+                toast.success('Log In Successful');
                 console.log(user);
             })
-            .catch(err => console.log(err))
+            .catch(err => {
+                toast.error("Log In Failed");
+                console.log(err)
+            })
     }
     return (
         <div className='my-20 flex justify-center items-center'>

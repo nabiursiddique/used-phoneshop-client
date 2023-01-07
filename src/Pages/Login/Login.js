@@ -4,6 +4,7 @@ import { FaGoogle } from 'react-icons/fa';
 import { useContext, useState } from 'react';
 import { AuthContext } from '../../context/AuthProvider';
 import { GoogleAuthProvider } from 'firebase/auth';
+import { toast } from 'react-hot-toast';
 
 const Login = () => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
@@ -18,10 +19,12 @@ const Login = () => {
         signIn(data.email, data.password)
             .then(result => {
                 const user = result.user;
+                toast.success('Log In Successful');
                 console.log(user);
             })
             .catch(err => {
                 console.log(err);
+                toast.error("Log In Failed");
                 setLoginError(err.message);
             })
 
@@ -34,6 +37,7 @@ const Login = () => {
         googleSignIn(googleProvider)
             .then((result) => {
                 const user = result.user;
+                toast.success('Log In Successful');
                 console.log(user);
             })
             .catch(err => setLoginError(err.message))
