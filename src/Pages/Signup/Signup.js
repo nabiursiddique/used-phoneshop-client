@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom';
 import { FaGoogle } from 'react-icons/fa';
 
 const Signup = () => {
-    const { register, handleSubmit, formState: { errors }
-    } = useForm();
+    const { register, handleSubmit, formState: { errors }, reset } = useForm();
     const handleSignup = data => {
         console.log(data)
+        reset();
     };
     return (
         <div className='my-20 flex justify-center items-center'>
@@ -30,10 +30,10 @@ const Signup = () => {
                         <label className="label"><span className="label-text font-bold text-white">Enter Your Password?</span>
                         </label>
                         <input type="password" {...register("password", {
-                             required: 'Password is required', 
-                             minLength: { value: 6, message: 'Password must be at least 6 characters' },
-                             pattern: { value: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])/, message: 'Password must be strong' }
-                              })} className="input input-bordered w-full max-w-xs" />
+                            required: 'Password is required',
+                            minLength: { value: 6, message: 'Password must be at least 6 characters' },
+                            pattern: { value: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])/, message: 'Password must be strong' }
+                        })} className="input input-bordered w-full max-w-xs" />
                         {errors.password && <p role='alert' className='text-blue-400'>{errors.password?.message}</p>}
                         <label className="label">
                             <span className="label-text-alt text-blue-400">Forget password?</span>

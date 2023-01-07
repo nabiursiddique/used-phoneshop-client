@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom';
 import { FaGoogle } from 'react-icons/fa';
 
 const Login = () => {
-    const { register, handleSubmit, formState: { errors }
-    } = useForm();
+    const { register, handleSubmit, formState: { errors }, reset } = useForm();
     const handleLogin = data => {
-        console.log(data)
+        console.log(data);
+        reset();
     };
     return (
         <div className='my-20 flex justify-center items-center'>
