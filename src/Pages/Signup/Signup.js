@@ -3,14 +3,15 @@ import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import { FaGoogle } from 'react-icons/fa';
 import { AuthContext } from '../../context/AuthProvider';
+import { GoogleAuthProvider } from 'firebase/auth';
 
 const Signup = () => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
-    const { createUser } = useContext(AuthContext);
+    const { createUser, googleSignIn } = useContext(AuthContext);
+
     const handleSignup = data => {
         console.log(data);
-
-        // Creating the user
+        // Creating the user with email and password
         createUser(data.email, data.password)
             .then(result => {
                 const user = result.user;
@@ -18,10 +19,20 @@ const Signup = () => {
             })
             .catch(err => console.error(err));
 
-
-
+        //Resetting the form 
         reset();
     };
+
+    const googleProvider = new GoogleAuthProvider();
+    const handleGoogleSignIn = () => {
+        // signup with google 
+        googleSignIn(googleProvider)
+            .then((result) => {
+                const user = result.user;
+                console.log(user);
+            })
+            .catch(err => console.log(err))
+    }
     return (
         <div className='my-20 flex justify-center items-center'>
             <div className='glass p-10 w-96'>
@@ -53,13 +64,12 @@ const Signup = () => {
                         </label>
                     </div>
                     <button className="btn w-full hover:bg-gradient-to-r from-gray-400 to-gray-600 glass text-white mt-5" type='submit'>SIGN UP</button>
-
-                    {/* New to doctors portal section */}
-                    <p className='text-center mt-3'>Already have an account? <Link className='text-blue-400' to='/login'>Log In</Link></p>
-                    <div className="divider">OR</div>
-                    <button className="btn btn-outline w-full font-semibold"><span className='text-xl mr-2'><FaGoogle /></span> CONTINUE WITH GOOGLE</button>
-
                 </form>
+                <p className='text-center mt-3'>Already have an account? <Link className='text-blue-400' to='/login'>Log In</Link></p>
+
+                <div className="divider">OR</div>
+
+                <button onClick={handleGoogleSignIn} className="btn btn-outline w-full font-semibold"><span className='text-xl mr-2'><FaGoogle /></span> CONTINUE WITH GOOGLE</button>
             </div>
         </div>
     );
