@@ -1,7 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../../context/AuthProvider';
 
 const Navbar = () => {
+    const { user, logout } = useContext(AuthContext);
+
+    const handleLogout = () => {
+        logout()
+            .then(() => { })
+            .catch(err => console.log(err))
+    }
+
     return (
         <div className="navbar bg-base-100 text-white">
             <div className="navbar-start ">
@@ -23,13 +32,16 @@ const Navbar = () => {
                             </ul>
                         </li>
                         <li className='font-bold uppercase'><Link to='/blogs'>Blogs</Link></li>
-                        <li className='font-bold uppercase btn-secondary rounded'><Link to='/login'>Log In</Link></li>
+                        {user?.uid ?
+                            <li className='font-bold uppercase btn-secondary rounded'><button onClick={handleLogout}>LOGOUT</button></li> :
+                            <li className='font-bold uppercase btn-secondary rounded'><Link to='/login'>Log In</Link></li>
+                        }
                     </ul>
                 </div>
                 <Link to='/' className="btn btn-ghost normal-case text-xl font-bold ">USED PHONE SHOP</Link>
             </div>
 
-            {/* For big screen devices */}
+            {/* For big screen devices  */}
             <div className="navbar-end hidden lg:flex ">
                 <ul className="menu menu-horizontal px-1 z-10">
                     <li className='font-bold uppercase'><Link to='/'>Home</Link></li>
@@ -45,7 +57,10 @@ const Navbar = () => {
                         </ul>
                     </li>
                     <li className='font-bold uppercase'><Link to='/blogs'>Blogs</Link></li>
-                    <li className='font-bold uppercase btn-secondary rounded'><Link to='/login'>Log In</Link></li>
+                    {user?.uid ?
+                        <li className='font-bold uppercase btn-secondary rounded'><button onClick={handleLogout}>LOGOUT</button></li> :
+                        <li className='font-bold uppercase btn-secondary rounded'><Link to='/login'>Log In</Link></li>
+                    }
                 </ul>
             </div>
         </div>
