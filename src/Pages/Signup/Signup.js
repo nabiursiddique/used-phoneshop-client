@@ -23,9 +23,9 @@ const Signup = () => {
         reset();
     };
 
+    // signup with google 
     const googleProvider = new GoogleAuthProvider();
     const handleGoogleSignIn = () => {
-        // signup with google 
         googleSignIn(googleProvider)
             .then((result) => {
                 const user = result.user;
