@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import { FaGoogle } from 'react-icons/fa';
@@ -8,16 +8,29 @@ import { toast } from 'react-hot-toast';
 
 const Signup = () => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
-    const { createUser, googleSignIn } = useContext(AuthContext);
+    const { createUser, googleSignIn, updateUser } = useContext(AuthContext);
+    const [signupError, setSignupError] = useState('');
 
     const handleSignup = data => {
         console.log(data);
+        setSignupError('');
         // Creating the user with email and password
         createUser(data.email, data.password)
             .then(result => {
                 const user = result.user;
-                toast.success('Log In Successful');
+                toast.success('Created account Successfully');
                 console.log(user);
+
+                // Sending the user info (name) into firebase 
+                const userInfo = {
+                    displayName: data.name
+                }
+                updateUser(userInfo)
+                    .then(() => { })
+                    .catch(err => {
+                        console.log(err)
+                        setSignupError(err.message)
+                    })
             })
             .catch(err => {
                 toast.error(err.message);

@@ -33,7 +33,11 @@ const Navbar = () => {
                         </li>
                         <li className='font-bold uppercase'><Link to='/blogs'>Blogs</Link></li>
                         {user?.uid ?
-                            <li className='font-bold uppercase btn-secondary rounded'><button onClick={handleLogout}>LOGOUT</button></li> :
+                            <>
+                                <li className='font-bold uppercase'><Link to='/dashboard'>Dashboard</Link></li>
+                                <li className='font-bold uppercase btn-secondary rounded'><button onClick={handleLogout}>LOGOUT</button></li>
+                            </>
+                            :
                             <li className='font-bold uppercase btn-secondary rounded'><Link to='/login'>Log In</Link></li>
                         }
                     </ul>
@@ -58,7 +62,11 @@ const Navbar = () => {
                     </li>
                     <li className='font-bold uppercase'><Link to='/blogs'>Blogs</Link></li>
                     {user?.uid ?
-                        <li className='font-bold uppercase btn-secondary rounded ml-3'><button onClick={handleLogout}>LOGOUT</button></li> :
+                        <>
+                            <li className='font-bold uppercase'><Link to='/dashboard'>Dashboard</Link></li>
+                            <li className='font-bold uppercase btn-secondary rounded ml-3'><button onClick={handleLogout}>LOGOUT</button></li>
+                        </>
+                        :
                         <li className='font-bold uppercase btn-secondary rounded ml-3'><Link to='/login'>Log In</Link></li>
                     }
                 </ul>
