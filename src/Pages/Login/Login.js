@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaGoogle } from 'react-icons/fa';
 import { useContext, useState } from 'react';
 import { AuthContext } from '../../context/AuthProvider';
@@ -10,6 +10,9 @@ const Login = () => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
     const { signIn, googleSignIn } = useContext(AuthContext);
     const [loginError, setLoginError] = useState('');
+    const location = useLocation();
+    const navigate = useNavigate();
+    const from = location.state?.from?.pathname || '/';
 
     const handleLogin = data => {
         console.log(data);
@@ -21,6 +24,7 @@ const Login = () => {
                 const user = result.user;
                 toast.success('Log In Successful');
                 console.log(user);
+                navigate(from, { replace: true })
             })
             .catch(err => {
                 console.log(err);
