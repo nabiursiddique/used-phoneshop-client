@@ -35,10 +35,12 @@ const Navbar = () => {
                         {user?.uid ?
                             <>
                                 <li className='font-bold uppercase'><Link to='/dashboard'>Dashboard</Link></li>
-                                <li className='font-bold uppercase btn-secondary rounded'><button onClick={handleLogout}>LOGOUT</button></li>
+                                <li className='font-bold uppercase btn-secondary rounded'><button className='btn hover:bg-gradient-to-r from-gray-400 to-gray-600 glass text-white' onClick={handleLogout}>LOGOUT</button></li>
                             </>
                             :
-                            <li className='font-bold uppercase btn-secondary rounded'><Link to='/login'>Log In</Link></li>
+                            <li className='font-bold uppercase rounded'><Link to='/login'>
+                                <button className='btn w-full hover:bg-gradient-to-r from-gray-400 to-gray-600 glass text-white'>LOG IN</button>
+                            </Link></li>
                         }
                     </ul>
                 </div>
@@ -64,10 +66,10 @@ const Navbar = () => {
                     {user?.uid ?
                         <>
                             <li className='font-bold uppercase'><Link to='/dashboard'>Dashboard</Link></li>
-                            <li className='font-bold uppercase btn-secondary rounded ml-3'><button onClick={handleLogout}>LOGOUT</button></li>
+                            <li className='font-bold uppercase btn-secondary rounded ml-3'><button className='btn hover:bg-gradient-to-r from-gray-400 to-gray-600 glass text-white' onClick={handleLogout}>LOGOUT</button></li>
                         </>
                         :
-                        <li className='font-bold uppercase btn-secondary rounded ml-3'><Link to='/login'>Log In</Link></li>
+                        <li><Link to='/login'><button className='btn hover:bg-gradient-to-r from-gray-400 to-gray-600 glass text-white'>LOG IN</button></Link></li>
                     }
                 </ul>
             </div>
