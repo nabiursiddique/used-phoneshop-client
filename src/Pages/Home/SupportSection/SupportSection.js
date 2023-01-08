@@ -11,8 +11,8 @@ const SupportSection = () => {
                 <h2 className='lg:text-xl text-center font-semibold text-white tracking-widest mt-4'>ALWAYS ON YOUR SIDE WHEN YOU NEED HELP.</h2>
             </div>
             {/* Get Support card */}
-            <div className='grid grid-cols-2 gap-8 my-8 mx-5'>
-                <div className="card lg:card-side glass shadow-xl">
+            <div className='grid lg:grid-cols-2 sm:grid-cols-1 gap-8 my-8 mx-5'>
+                <div className="card card-side glass shadow-xl">
                     <figure><img className='w-1/3' src={callIcon} alt="Album" /></figure>
                     <div className="card-body w-full">
                         <p>HAVE ANY DOUBTS?</p>
@@ -24,7 +24,7 @@ const SupportSection = () => {
                         </div>
                     </div>
                 </div>
-                <div className="card lg:card-side glass shadow-xl">
+                <div className="card card-side glass shadow-xl">
                     <figure><img className='w-1/3' src={chatIcon} alt="Album" /></figure>
                     <div className="card-body w-full">
                         <p>WANNA TALK TO US?</p>
